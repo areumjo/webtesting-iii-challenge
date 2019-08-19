@@ -3,6 +3,7 @@ import React from 'react';
 import Display from './Display';
 
 import { render, fireEvent } from '@testing-library/react';
+import { toHaveClass } from '@testing-library/jest-dom'
 
 
 describe('<Display />', () => {
@@ -13,16 +14,12 @@ describe('<Display />', () => {
     })
     it('Locked gate?', () => {
         const { getByText } = render(<Display locked={true} />);
-        expect(getByText('Locked'));  
-        //expect(getByText('Locked')).toHaveClass('locked')
-      
+        const locked = getByText('Locked');  
+        expect(locked);
+        expect(locked.toHaveClass('red-led'));
     })
     it('Closed gate?', () => {
         const { getByText } = render(<Display closed={true} />);
         expect(getByText('Closed'));        
     })
-    // it('locked or closed is red-led?', () => {
-    //     const { getByText } = render(<Display />);
-    //     expect(getByText.classList('lockedClass')).toBe(true)
-    // })
 })
