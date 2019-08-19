@@ -1,4 +1,4 @@
-// Test away!
+// Test away! -- mock
 import React from 'react';
 import Display from './Display';
 
